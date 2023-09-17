@@ -48,7 +48,7 @@ hoveredUlInfo: example
 **Request:**
 ```js
 const apiURL = 'https://animeapi-1.u1u1u1u1u1u1u1.repl.co/search_anime';
-const searchQuery = 'Attack on Titan'; // Replace with your desired search query
+const searchQuery = 'Vinland'; // Replace with your desired search query
 
 // Create the full URL for the API request
 const apiUrlWithQuery = new URL(apiURL);
