@@ -46,7 +46,42 @@ hoveredUlInfo: example
 ### Example
 
 **Request:**
+```js
+const apiURL = 'https://animeapi-1.u1u1u1u1u1u1u1.repl.co/search_anime';
+const searchQuery = 'Attack on Titan'; // Replace with your desired search query
 
+// Create the full URL for the API request
+const apiUrlWithQuery = new URL(apiURL);
+apiUrlWithQuery.searchParams.append('search', searchQuery);
+
+// Send a GET request to the API
+fetch(apiUrlWithQuery)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP Error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    const animeList = data.anime_list || [];
+
+    if (animeList.length > 0) {
+      console.log(`Anime Search Results for "${searchQuery}":`);
+      animeList.forEach((anime) => {
+        console.log(`Name: ${anime.Name}`);
+        console.log(`Image URL: ${anime['Image URL']}`);
+        console.log(`hoveredUlInfo: ${anime.hoveredUlInfo}`);
+        console.log();
+      });
+    } else {
+      console.log(`No anime found for "${searchQuery}".`);
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
+```
 ```python
 import requests
 
